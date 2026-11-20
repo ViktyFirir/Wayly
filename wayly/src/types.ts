@@ -10,3 +10,4 @@ export interface Tour {
   image: string
   popularity: number
 }
+export type ViewMode = 'grid' | 'list'
