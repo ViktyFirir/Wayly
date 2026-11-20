@@ -10,4 +10,10 @@ export interface Tour {
   image: string
   popularity: number
 }
+
 export type ViewMode = 'grid' | 'list'
+
+export interface MenuItem {
+  label: string
+  active?: boolean
+}
