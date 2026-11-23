@@ -3,7 +3,7 @@ import TourCard from '../components/TourCard/TourCard'
 import ViewToggle from '../components/ViewToggle/ViewToggle'
 import { tours } from '../data/tours'
 import type { ViewMode } from '../types'
-import { pluralize } from '../utils/pluralize'
+import { pluralize, tourForms } from '../utils/pluralize'
 import './CatalogPage.css'
 
 function CatalogPage() {
@@ -21,7 +21,7 @@ function CatalogPage() {
 
       <div className="catalog__bar">
         <p className="catalog__count">
-          Найдено {tours.length} {pluralize(tours.length, ['тур', 'тура', 'туров'])}
+          Найдено {tours.length} {pluralize(tours.length, tourForms)}
         </p>
         <ViewToggle value={view} onChange={setView} />
       </div>

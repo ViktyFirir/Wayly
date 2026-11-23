@@ -1,7 +1,7 @@
 import { typeLabels } from '../../data/labels'
 import type { Tour, ViewMode } from '../../types'
 import { formatPrice } from '../../utils/formatPrice'
-import { pluralize } from '../../utils/pluralize'
+import { dayForms, pluralize } from '../../utils/pluralize'
 import { ArrowIcon } from '../ArrowIcon'
 import './TourCard.css'
 
@@ -16,8 +16,17 @@ function TourCard({ tour, view }: TourCardProps) {
   return (
     <article className={`tour-card tour-card--${view}`}>
       <div className="tour-card__media">
-        <a href="#" className="tour-card__image-link" aria-label={title} tabIndex={-1}>
-          <img className="tour-card__image" src={image} alt={title} />
+        {/* дублирует ссылку в названии, поэтому скрыта от клавиатуры и читалок экрана */}
+        <a href="#" className="tour-card__image-link" aria-hidden="true" tabIndex={-1}>
+          <img
+            className="tour-card__image"
+            src={image}
+            alt=""
+            width={908}
+            height={600}
+            loading="lazy"
+            decoding="async"
+          />
         </a>
 
         <span className="tour-card__country">{country}</span>
@@ -41,7 +50,7 @@ function TourCard({ tour, view }: TourCardProps) {
       <div className="tour-card__body">
         <ul className="tour-card__meta">
           <li>
-            {days} {pluralize(days, ['день', 'дня', 'дней'])}
+            {days} {pluralize(days, dayForms)}
           </li>
           <li>Авторская программа</li>
         </ul>

@@ -1,5 +1,9 @@
+export type PluralForms = readonly [string, string, string]
 
-export function pluralize(count: number, forms: [string, string, string]): string {
+export const tourForms: PluralForms = ['тур', 'тура', 'туров']
+export const dayForms: PluralForms = ['день', 'дня', 'дней']
+
+export function pluralize(count: number, forms: PluralForms): string {
   const [one, few, many] = forms
   const last = count % 10
   const tail = count % 100
