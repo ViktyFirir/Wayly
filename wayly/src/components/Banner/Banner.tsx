@@ -1,4 +1,4 @@
-import arrow from '../../assets/icons/arrow-right.png'
+import arrow from '../../assets/icons/arrow-right.svg'
 import './Banner.css'
 
 function Banner() {
@@ -15,7 +15,7 @@ function Banner() {
         </p>
         <a href="#" className="banner__btn">
           Начать путешествие
-          <img src={arrow} alt="" width={16} />
+          <img className="banner__arrow" src={arrow} alt="" />
         </a>
       </div>
     </section>

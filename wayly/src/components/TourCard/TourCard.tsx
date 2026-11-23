@@ -1,0 +1,65 @@
+import { typeLabels } from '../../data/labels'
+import type { Tour, ViewMode } from '../../types'
+import { formatPrice } from '../../utils/formatPrice'
+import { pluralize } from '../../utils/pluralize'
+import { ArrowIcon } from '../ArrowIcon'
+import heart from '../../assets/icons/heart.svg'
+import './TourCard.css'
+
+export type TourCardProps = {
+  tour: Tour
+  view: ViewMode
+}
+
+function TourCard({ tour, view }: TourCardProps) {
+  const { title, country, type, days, price, image } = tour
+
+  return (
+    <article className={`tour-card tour-card--${view}`}>
+      <div className="tour-card__media">
+        <a href="#" className="tour-card__image-link" aria-label={title} tabIndex={-1}>
+          <img className="tour-card__image" src={image} alt={title} />
+        </a>
+
+        <span className="tour-card__country">{country}</span>
+
+        <button
+          type="button"
+          className="tour-card__fav"
+          aria-label="Добавить в избранное"
+        >
+          <img className="tour-card__heart" src={heart} alt="" />
+        </button>
+
+        <div className="tour-card__caption">
+          <span className="tour-card__type">{typeLabels[type]}</span>
+          <h3 className="tour-card__title">
+            <a href="#">{title}</a>
+          </h3>
+        </div>
+      </div>
+
+      <div className="tour-card__body">
+        <ul className="tour-card__meta">
+          <li>
+            {days} {pluralize(days, ['день', 'дня', 'дней'])}
+          </li>
+          <li>Авторская программа</li>
+        </ul>
+
+        <div className="tour-card__footer">
+          <p className="tour-card__price">
+            <span className="tour-card__price-label">Стоимость от</span>
+            {formatPrice(price)}
+          </p>
+
+          <button type="button" className="tour-card__go" aria-label={`Подробнее: ${title}`}>
+            <ArrowIcon />
+          </button>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+export default TourCard

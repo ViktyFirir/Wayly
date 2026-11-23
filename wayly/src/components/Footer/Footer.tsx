@@ -1,7 +1,7 @@
 import logo from '../../assets/logo-footer.png'
-import instagram from '../../assets/icons/instagram.png'
+import instagram from '../../assets/icons/instagram.svg'
 import telegram from '../../assets/icons/telegram.svg'
-import whatsapp from '../../assets/icons/whatsapp.png'
+import whatsapp from '../../assets/icons/whatsapp.svg'
 import { menu } from '../../data/menu'
 import Banner from '../Banner/Banner'
 import './Footer.css'
@@ -44,7 +44,7 @@ function Footer() {
                 className="footer__social"
                 aria-label={social.label}
               >
-                <img src={social.icon} alt="" width={16} height={16} />
+                <img className="footer__social-icon" src={social.icon} alt="" />
               </a>
             ))}
           </div>

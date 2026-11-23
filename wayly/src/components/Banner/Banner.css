@@ -85,3 +85,8 @@
     width: 40px;
   }
 }
+.banner__arrow {
+  width: 16px;
+  height: auto;
+  flex-shrink: 0;
+}

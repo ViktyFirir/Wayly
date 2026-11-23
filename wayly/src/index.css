@@ -7,6 +7,9 @@
   --color-line: rgba(255, 255, 255, 0.14);
   --color-glass: rgba(60, 60, 60, 0.6);
   --color-hover: rgba(255, 255, 255, 0.16);
+  --color-nav: rgba(255, 255, 255, 0.08);
+  --color-brand: #565554;
+  --color-footer: #1f1d1b;
 
   --font-main: 'Manrope', sans-serif;
   --font-serif: 'Cormorant Garamond', serif;
