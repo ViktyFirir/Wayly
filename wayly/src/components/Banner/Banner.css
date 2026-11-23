@@ -20,7 +20,7 @@
   align-items: center;
   gap: var(--spacing-lg);
   margin: 0 0 var(--spacing-xs);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
@@ -41,7 +41,7 @@
 }
 
 .banner__text {
-  max-width: 280px;
+  max-width: 340px;
   margin: 0 0 var(--spacing-lg);
   font-size: var(--font-medium);
   line-height: 1.4;
@@ -54,7 +54,7 @@
   padding: 10px 22px;
   border: 1px solid var(--color-text);
   border-radius: var(--radius-button);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }

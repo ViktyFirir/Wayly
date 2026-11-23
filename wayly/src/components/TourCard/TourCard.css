@@ -59,7 +59,7 @@
   padding: 5px 12px;
   border-radius: var(--radius-button);
   background: var(--color-glass);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -111,7 +111,7 @@
 .tour-card__type {
   display: block;
   margin-bottom: 4px;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-muted);
@@ -120,7 +120,7 @@
 .tour-card__title {
   margin: 0;
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 400;
   line-height: 1.1;
 }
@@ -165,7 +165,7 @@
   align-items: baseline;
   gap: var(--spacing-xs);
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
 }
 

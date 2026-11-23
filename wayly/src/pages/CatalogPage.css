@@ -15,9 +15,9 @@
 }
 
 .catalog__subtitle {
-  max-width: 260px;
+  max-width: 360px;
   margin: 0 0 var(--spacing-3xl);
-  font-size: var(--font-small);
+  font-size: var(--font-medium);
   line-height: 1.5;
   color: var(--color-muted);
 }
@@ -31,7 +31,7 @@
 
 .catalog__count {
   margin: 0;
-  font-size: var(--font-small);
+  font-size: var(--font-medium);
 }
 
 .catalog__list {
