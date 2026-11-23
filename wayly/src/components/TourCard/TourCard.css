@@ -6,12 +6,32 @@
   border: 1px solid var(--color-line);
   border-radius: var(--radius-card);
   background: var(--color-card);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.tour-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+}
+
+.tour-card__image {
+  transition: transform 0.6s ease;
+}
+
+.tour-card:hover .tour-card__image {
+  transform: scale(1.06);
 }
 
 .tour-card__media {
   position: relative;
+  isolation: isolate;
   flex: 1;
   min-height: 220px;
+  overflow: hidden;
 }
 
 .tour-card__image-link {
@@ -56,9 +76,23 @@
   background: var(--color-glass);
 }
 
-.tour-card__fav:hover,
-.tour-card__go:hover {
-  background: var(--color-hover);
+/* Сердечко: при наведении розово-красное */
+.tour-card__fav {
+  color: var(--color-text);
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.tour-card__fav:hover {
+  background: rgba(232, 93, 117, 0.28);
+  color: #ff7088;
+  transform: scale(1.1);
+}
+
+.tour-card__fav:active {
+  transform: scale(0.95);
 }
 
 .tour-card__caption {
@@ -89,6 +123,10 @@
   font-size: 24px;
   font-weight: 400;
   line-height: 1.1;
+}
+
+.tour-card__title a {
+  transition: opacity 0.25s ease;
 }
 
 .tour-card__title a:hover {
@@ -138,8 +176,12 @@
 }
 
 .tour-card__heart {
+  display: block;
   width: 17px;
   height: 14px;
+  background-color: currentColor;
+  -webkit-mask: url('../../assets/icons/heart.svg') center / contain no-repeat;
+  mask: url('../../assets/icons/heart.svg') center / contain no-repeat;
 }
 
 .tour-card__go {
@@ -151,11 +193,28 @@
   border: 0;
   border-radius: 50%;
   background: var(--color-glass);
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
 .tour-card__go svg {
   width: 20px;
   height: 20px;
+  transition: transform 0.25s ease;
+}
+
+.tour-card:hover .tour-card__go {
+  background: var(--color-hover);
+}
+
+.tour-card .tour-card__go:hover {
+  background: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.tour-card .tour-card__go:hover svg {
+  transform: translate(2px, -2px);
 }
 
 .tour-card__fav:focus-visible,
@@ -165,6 +224,7 @@
   outline-offset: 2px;
 }
 
+/* Режим списка: фото слева, информация справа */
 .tour-card--list {
   flex-direction: row;
 }
@@ -216,5 +276,20 @@
 
   .tour-card--list .tour-card__media {
     flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-card,
+  .tour-card__image,
+  .tour-card__go,
+  .tour-card__go svg,
+  .tour-card__fav {
+    transition: none;
+  }
+
+  .tour-card:hover,
+  .tour-card:hover .tour-card__image {
+    transform: none;
   }
 }

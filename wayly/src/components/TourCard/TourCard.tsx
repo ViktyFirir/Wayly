@@ -3,7 +3,6 @@ import type { Tour, ViewMode } from '../../types'
 import { formatPrice } from '../../utils/formatPrice'
 import { pluralize } from '../../utils/pluralize'
 import { ArrowIcon } from '../ArrowIcon'
-import heart from '../../assets/icons/heart.svg'
 import './TourCard.css'
 
 export type TourCardProps = {
@@ -28,7 +27,7 @@ function TourCard({ tour, view }: TourCardProps) {
           className="tour-card__fav"
           aria-label="Добавить в избранное"
         >
-          <img className="tour-card__heart" src={heart} alt="" />
+          <span className="tour-card__heart" aria-hidden="true" />
         </button>
 
         <div className="tour-card__caption">

@@ -4,8 +4,6 @@ import './Banner.css'
 function Banner() {
   return (
     <section className="banner">
-      <img className="banner__image" src="/images/banner.jpg" alt="" />
-
       <div className="banner__content">
         <p className="banner__label">Путешествуйте с Wayly</p>
         <h2 className="banner__title">Откройте новые горизонты</h2>

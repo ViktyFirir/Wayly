@@ -49,8 +49,14 @@
   border-radius: 50%;
 }
 
+.footer__social {
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
 .footer__social:hover {
   background: var(--color-hover);
+  border-color: var(--color-text);
+  transform: translateY(-2px);
 }
 
 .footer__copy {
