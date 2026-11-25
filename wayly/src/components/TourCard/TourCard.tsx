@@ -22,8 +22,6 @@ function TourCard({ tour, view }: TourCardProps) {
             className="tour-card__image"
             src={image}
             alt=""
-            width={908}
-            height={600}
             loading="lazy"
             decoding="async"
           />

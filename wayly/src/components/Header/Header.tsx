@@ -1,6 +1,6 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import logo from '../../assets/logo.png'
-import search from '../../assets/icons/search.png'
+import search from '../../assets/icons/search.svg'
 import { menu } from '../../data/menu'
 import type { MenuItem } from '../../types'
 import './Header.css'
@@ -49,6 +49,9 @@ function Links({
   )
 }
 
+const leftItems = menu.filter((item) => item.position === 'left')
+const rightItems = menu.filter((item) => item.position === 'right')
+
 function Header() {
   const [selected, setSelected] = useState(
     () => menu.find((item) => item.active)?.label ?? menu[0].label,
@@ -67,6 +70,9 @@ function Header() {
     else linkRefs.current.delete(label)
   }
 
+  // актуальная функция расстановки полосы: её же вызывают resize и загрузка шрифтов
+  const placeRef = useRef<() => void>(() => {})
+
   useLayoutEffect(() => {
     const place = () => {
       const nav = navRef.current
@@ -83,20 +89,31 @@ function Header() {
       }px)`
     }
 
+    placeRef.current = place
     place()
+  }, [target])
+
+  // подписки ставим один раз при монтировании и полностью снимаем при размонтировании
+  useEffect(() => {
+    const place = () => placeRef.current()
+    let active = true
+
     // включаем анимацию только после первой установки, чтобы полоса не «влетала» при загрузке
     const frame = requestAnimationFrame(() =>
       indicatorRef.current?.classList.add('header__indicator--ready'),
     )
 
     window.addEventListener('resize', place)
-    void document.fonts?.ready.then(place)
+    void document.fonts.ready.then(() => {
+      if (active) place()
+    })
 
     return () => {
+      active = false
       cancelAnimationFrame(frame)
       window.removeEventListener('resize', place)
     }
-  }, [target])
+  }, [])
 
   const linksProps = {
     current: target,
@@ -109,13 +126,13 @@ function Header() {
   return (
     <header className="header">
       <nav className="header__nav" ref={navRef}>
-        <Links items={menu.slice(0, 2)} {...linksProps} />
+        <Links items={leftItems} {...linksProps} />
 
         <a href="#" className="header__brand">
           <img className="header__logo" src={logo} alt="Wayly" />
         </a>
 
-        <Links items={menu.slice(2)} {...linksProps} />
+        <Links items={rightItems} {...linksProps} />
 
         <span className="header__indicator" ref={indicatorRef} aria-hidden="true" />
       </nav>
