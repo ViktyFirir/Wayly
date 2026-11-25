@@ -1,0 +1,128 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  position: relative;
+  border-radius: var(--radius-button);
+  background: var(--color-nav);
+  font-size: 16px;
+}
+
+.header__links {
+  display: flex;
+  gap: 44px;
+  padding: 0 40px;
+}
+
+.header__link {
+  opacity: 0.65;
+  transition: opacity 0.25s ease;
+}
+
+.header__link--current {
+  opacity: 1;
+}
+
+.header__link:focus-visible {
+  outline: none;
+}
+
+.header__indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  border-radius: 1px;
+  background: var(--color-text);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header__indicator--ready {
+  opacity: 1;
+  transition:
+    transform 0.35s cubic-bezier(0.65, 0, 0.35, 1),
+    width 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.header__brand {
+  position: relative;
+  z-index: 2;
+  display: block;
+  padding: 10px 32px;
+  border-radius: var(--radius-button);
+  background: var(--color-brand);
+}
+
+.header__logo {
+  height: 30px;
+  width: auto;
+}
+
+.header__round {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  transition: background 0.25s ease;
+  padding: 0;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.header__login {
+  height: 40px;
+  padding: 0 32px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-button);
+  background: transparent;
+  font-size: 16px;
+  transition: background 0.25s ease;
+}
+
+.header__login:hover,
+.header__round:hover {
+  background: var(--color-hover);
+}
+
+@media (max-width: 767px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .header__nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: var(--radius-card);
+  }
+
+  .header__brand {
+    display: flex;
+    justify-content: center;
+    order: -1;
+    width: 100%;
+  }
+
+  .header__links {
+    gap: 20px;
+    padding: 8px 12px;
+  }
+
+  .header__login {
+    padding: 0 20px;
+  }
+}
+.header__round-icon {
+  width: 18px;
+  height: 18px;
+}
