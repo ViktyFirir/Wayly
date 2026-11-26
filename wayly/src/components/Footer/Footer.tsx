@@ -1,8 +1,10 @@
+import { Link } from 'react-router'
 import logo from '../../assets/logo-footer.png'
 import instagram from '../../assets/icons/instagram.svg'
 import telegram from '../../assets/icons/telegram.svg'
 import whatsapp from '../../assets/icons/whatsapp.svg'
 import { menu } from '../../data/menu'
+import { preventDefault } from '../../utils/preventDefault'
 import Banner from '../Banner/Banner'
 import './Footer.css'
 
@@ -24,16 +26,27 @@ function Footer() {
 
       <div className="footer__bar">
         <div className="footer__top">
-          <a href="#" className="footer__brand">
+          <Link to="/" className="footer__brand">
             <img className="footer__logo" src={logo} alt="Wayly" />
-          </a>
+          </Link>
 
           <nav className="footer__nav">
-            {menu.map((item) => (
-              <a key={item.label} href="#" className="footer__link">
-                {item.label}
-              </a>
-            ))}
+            {menu.map((item) =>
+              item.to === undefined ? (
+                <a
+                  key={item.label}
+                  href="#"
+                  className="footer__link"
+                  onClick={preventDefault}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link key={item.label} to={item.to} className="footer__link">
+                  {item.label}
+                </Link>
+              ),
+            )}
           </nav>
 
           <div className="footer__socials">
@@ -43,6 +56,7 @@ function Footer() {
                 href="#"
                 className="footer__social"
                 aria-label={social.label}
+                onClick={preventDefault}
               >
                 <img className="footer__social-icon" src={social.icon} alt="" />
               </a>

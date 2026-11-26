@@ -1,3 +1,4 @@
+// as const: чтобы TypeScript не расширил строки до string и принял их как значения SVG-атрибутов
 const stroke = {
   fill: 'none',
   stroke: 'currentColor',
