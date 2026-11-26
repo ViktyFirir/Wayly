@@ -1,5 +1,6 @@
 .price-badge {
   position: absolute;
+  z-index: 2;
   bottom: -28px;
   left: -40px;
   padding: 16px 24px;
