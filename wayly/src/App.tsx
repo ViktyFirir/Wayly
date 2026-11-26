@@ -3,6 +3,7 @@ import './App.css'
 import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
+import BookingPage from './pages/BookingPage'
 import CatalogPage from './pages/CatalogPage'
 import NotFoundPage from './pages/NotFoundPage'
 import TourPage from './pages/TourPage'
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<CatalogPage />} />
         <Route path="/tours" element={<CatalogPage />} />
         <Route path="/tours/:id" element={<TourPage />} />
+        <Route path="/booking/:id" element={<BookingPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
