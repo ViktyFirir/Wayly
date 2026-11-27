@@ -4,14 +4,17 @@ import IncludedList from '../components/IncludedList/IncludedList'
 import NotFound from '../components/NotFound/NotFound'
 import PlacesList from '../components/PlacesList/PlacesList'
 import PriceBadge from '../components/PriceBadge/PriceBadge'
+import ProgramSection from '../components/ProgramSection/ProgramSection'
+import SimilarTours from '../components/SimilarTours/SimilarTours'
 import TourGallery from '../components/TourGallery/TourGallery'
-import { getTourById } from '../data/tours'
+import { getTourById, tours } from '../data/tours'
+import { getSimilarTours } from '../utils/getSimilarTours'
 import { dayForms, nightForms, pluralize } from '../utils/pluralize'
 import './TourPage.css'
 
 function TourPage() {
   const { id } = useParams()
-  // id может быть undefined, поэтому сначала проверяем его, а потом ищем тур
+  // id может быть undefined, поэтому сначала проверяю его, а потом ищу тур
   const tour = id === undefined ? undefined : getTourById(id)
 
   if (tour === undefined) {
@@ -53,6 +56,8 @@ function TourPage() {
         <IncludedList items={tour.included} />
         <BookingBar tourId={tour.id} note={tour.cancellationNote} />
         <PlacesList places={tour.places} />
+        <ProgramSection steps={tour.program} />
+        <SimilarTours tours={getSimilarTours(tour, tours)} />
       </main>
     </div>
   )

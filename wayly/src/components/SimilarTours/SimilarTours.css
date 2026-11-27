@@ -1,0 +1,33 @@
+.similar {
+  margin-top: 120px;
+}
+
+.similar__title {
+  position: relative;
+  margin: 0 0 56px;
+  padding-bottom: var(--spacing-lg);
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.similar__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: min(460px, 80%);
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-line);
+  transform: translateX(-50%);
+}
+
+.similar__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-xl);
+}
