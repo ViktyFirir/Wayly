@@ -13,3 +13,4 @@ export function pluralize(count: number, forms: PluralForms): string {
 
   return many
 }
+export const nightForms: PluralForms = ['ночь', 'ночи', 'ночей']

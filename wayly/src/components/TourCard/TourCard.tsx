@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { typeLabels } from '../../data/labels'
 import type { Tour, ViewMode } from '../../types'
 import { formatPrice } from '../../utils/formatPrice'
@@ -11,13 +12,14 @@ export type TourCardProps = {
 }
 
 function TourCard({ tour, view }: TourCardProps) {
-  const { title, country, type, days, price, image } = tour
+  const { id, title, country, type, days, price, image } = tour
+  const href = `/tours/${id}`
 
   return (
     <article className={`tour-card tour-card--${view}`}>
       <div className="tour-card__media">
         {/* дублирует ссылку в названии, поэтому скрыта от клавиатуры и читалок экрана */}
-        <a href="#" className="tour-card__image-link" aria-hidden="true" tabIndex={-1}>
+        <Link to={href} className="tour-card__image-link" aria-hidden="true" tabIndex={-1}>
           <img
             className="tour-card__image"
             src={image}
@@ -25,7 +27,7 @@ function TourCard({ tour, view }: TourCardProps) {
             loading="lazy"
             decoding="async"
           />
-        </a>
+        </Link>
 
         <span className="tour-card__country">{country}</span>
 
@@ -40,7 +42,7 @@ function TourCard({ tour, view }: TourCardProps) {
         <div className="tour-card__caption">
           <span className="tour-card__type">{typeLabels[type]}</span>
           <h3 className="tour-card__title">
-            <a href="#">{title}</a>
+            <Link to={href}>{title}</Link>
           </h3>
         </div>
       </div>
@@ -59,9 +61,9 @@ function TourCard({ tour, view }: TourCardProps) {
             {formatPrice(price)}
           </p>
 
-          <button type="button" className="tour-card__go" aria-label={`Подробнее: ${title}`}>
+          <Link to={href} className="tour-card__go" aria-label={`Подробнее: ${title}`}>
             <ArrowIcon />
-          </button>
+          </Link>
         </div>
       </div>
     </article>
