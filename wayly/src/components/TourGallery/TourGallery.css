@@ -1,0 +1,179 @@
+.gallery {
+  width: 100%;
+  max-width: 520px;
+  margin: 56px auto 0;
+}
+
+.gallery__frame {
+  position: relative;
+}
+
+.gallery__main {
+  position: relative;
+}
+
+.gallery__photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+
+.gallery__photo:disabled {
+  cursor: default;
+}
+
+.gallery__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* новое фото выезжает сверху или снизу в зависимости от направления */
+.gallery__image--next {
+  animation: gallery-from-bottom 0.4s ease;
+}
+
+.gallery__image--prev {
+  animation: gallery-from-top 0.4s ease;
+}
+
+@keyframes gallery-from-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+}
+
+@keyframes gallery-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-32px);
+  }
+}
+
+/* соседние фото выглядывают сверху и снизу и растворяются в градиенте */
+.gallery__peek {
+  display: block;
+  width: 90%;
+  height: 52px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: none;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+.gallery__peek:hover {
+  opacity: 1;
+}
+
+.gallery__peek img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery__peek--top {
+  margin-bottom: 8px;
+  border-radius: 16px 16px 0 0;
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+.gallery__peek--top img {
+  object-position: center bottom;
+}
+
+.gallery__peek--bottom {
+  margin-top: 8px;
+  border-radius: 0 0 16px 16px;
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+.gallery__peek--bottom img {
+  object-position: center top;
+}
+
+.gallery__arrow {
+  position: absolute;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-glass);
+  color: var(--color-text);
+  transform: translateX(-50%);
+  transition: background 0.25s ease;
+}
+
+.gallery__arrow:hover {
+  background: var(--color-hover);
+}
+
+.gallery__arrow--up {
+  top: 12px;
+}
+
+.gallery__arrow--down {
+  bottom: 12px;
+}
+
+.gallery__photo:focus-visible,
+.gallery__arrow:focus-visible,
+.gallery__peek:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* вертикальный индикатор: фото листаются сверху вниз */
+.gallery__track {
+  position: absolute;
+  top: 0;
+  right: -28px;
+  bottom: 0;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--color-line);
+}
+
+.gallery__thumb {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--color-text);
+  transition: top 0.35s ease;
+}
+
+.gallery__counter {
+  margin-top: 28px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+@media (max-width: 639px) {
+  .gallery__track {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery__image--next,
+  .gallery__image--prev {
+    animation: none;
+  }
+}
